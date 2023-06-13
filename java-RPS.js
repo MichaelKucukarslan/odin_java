@@ -4,6 +4,9 @@ const ROCK = 0;
 const PAPER = 1;
 const SCISSORS = 2;
 
+let userScore = 0;
+let computerScore = 0;
+
 function game(userChoice) {
     if (userChoice == "rock") {
         userChoice = ROCK;
@@ -19,25 +22,32 @@ function game(userChoice) {
         alert("Tie " + computerChoice);
     } else if (computerChoice == SCISSORS && userChoice == ROCK) {
         alert("You won");
+        userScore++;
         // add point to user
     } else if (computerChoice == ROCK && userChoice == SCISSORS) {
         alert("Computer Won");
+        computerScore++;
         // add point to computer
     } else if (computerChoice > userChoice) {
         alert("Computer Won");
+        computerScore++;
         // add point to computer
     } else {
         alert("You Won");
+        userScore++;
         // add point to user
     }
     // Display the outcome
-    alertUser(userChoice, computerChoice);
+    alertUserOfOutcome(userChoice, computerChoice);
     // Display the score
-    
+    alertUserOfScore(userScore, computerScore);
     // First one to 5 wins
 }
 
-function alertUser(userChoice, computerChoice) {
+function alertUserOfScore(userScore, computerScore){
+    alert("The score is:\n" + "You: " + userScore + "\nComputer: " + computerScore);
+}
+function alertUserOfOutcome(userChoice, computerChoice) {
     userChoice = intToChoice(userChoice);
     computerChoice = intToChoice(computerChoice);
     alert("You Chose: " + userChoice + "\nComputer Chose: " + computerChoice);
