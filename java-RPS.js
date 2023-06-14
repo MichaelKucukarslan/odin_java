@@ -46,6 +46,15 @@ function game(userChoice) {
 
 function alertUserOfScore(userScore, computerScore){
     alert("The score is:\n" + "You: " + userScore + "\nComputer: " + computerScore);
+    if (userScore == 5){
+        alert("You won the game");
+        userScore = 0;
+        computerScore = 0;
+    } else if (computerScore == 5){
+        alert("The computer won the game");
+        userScore = 0;
+        computerScore = 0;
+    }
 }
 function alertUserOfOutcome(userChoice, computerChoice) {
     userChoice = intToChoice(userChoice);
