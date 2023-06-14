@@ -1,0 +1,44 @@
+:root {
+    --border-radius: 30px;
+    --input-size: 50px;
+}
+
+body * {
+    border: 1px solid red;
+}
+
+h1{
+    border: 1px solid red;
+}
+.score_container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.score {
+    background-color: gray;
+    border-radius: var(--border-radius);
+    justify-content: center;
+    text-align: center;
+    width: 200px;
+}
+
+.game_buttons_container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20%;
+}
+
+.game_buttons_container input{
+    background-color: black;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    width: var(--input-size);
+    height: var(--input-size);
+    flex-shrink: 1;
+}
+
+.center {
+    text-align: center;
+}

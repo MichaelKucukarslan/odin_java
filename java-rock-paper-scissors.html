@@ -2,12 +2,27 @@
 <Head>
     <title>Rock, Paper, Scissors</title>
     <script src="java-RPS.js"></script>
+    <link rel="stylesheet" href="java-RPS.css">
 </Head>
 <!-- Add 3 Buttons for Rock, Paper, Scissors -->
-<h1>Wanna play a game?</h1>
-<p> You will be playing Rock, Paper, Scissors. First to 5 wins.</p>
-<h3>Choose wisely:</h3>
-<button id="rock" onclick="game('rock')">Rock</button>
-<button id="paper" onclick="game('paper')">Paper</button>
-<button id="scissors" onclick="game('scissors')">Scissors</button>
+<h1 class="center">Wanna play a game?</h1>
+<p class="center"> You will be playing Rock, Paper, Scissors.</p>
+<p class="center"> First to 5 wins.</p>
+<!-- User and Player Score -->
+<div class="score_container">
+    <div class="score">
+        <p>Your Score:</p>
+        <p id="userScore">0</p>
+    </div>
+    <div class="score">
+        <p>Computer Score:</p>
+        <p id="computerScore">0</p>
+    </div>
+</div>
+<h3 class="center">Choose wisely:</h3>
+<div class="game_buttons_container">
+    <input type="image" src="./images/granite.png" onclick="game('rock')" alt="Rock">
+    <input type="image" src="./images/paper.png" onclick="game('paper')" alt="Paper">
+    <input type="image" src="./images/scissors.png" onclick="game('scissors')" alt="Scissors">
+</div>
 <!-- Add a way to show the user the result -->
