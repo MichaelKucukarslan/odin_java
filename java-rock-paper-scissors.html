@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <Head>
     <title>Rock, Paper, Scissors</title>
-    <script src="java-RPS.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="java-RPS.js" defer></script>
     <link rel="stylesheet" href="java-RPS.css">
 </Head>
 <!-- Add 3 Buttons for Rock, Paper, Scissors -->
@@ -21,7 +22,7 @@
 </div>
 <h3 class="center">Choose wisely:</h3>
 <div class="game_buttons_container">
-    <input type="image" src="./images/granite.png" onclick="game('rock')" alt="Rock">
+    <input type="image" src="./images/granite.png" onclick="game('rock');animateMe();" alt="Rock">
     <input type="image" src="./images/paper.png" onclick="game('paper')" alt="Paper">
     <input type="image" src="./images/scissors.png" onclick="game('scissors')" alt="Scissors">
 </div>
