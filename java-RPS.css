@@ -1,22 +1,30 @@
 :root {
     --border-radius: 30px;
     --input-size: 50px;
+    --color-header: #4059AD;
+    --color-background: #6B9AC4;
+    --color-score: #97D8C4;
+    --color-four: #EFF2F1;
+    --color-button: #ffc043;
+    --color-button-border: #ff9100;
+    --first: 40deg;
+    --second: -40deg;
+    --first-scale: 250%;
+    --second-scale: 300%;
 }
 
-body * {
-    border: 1px solid red;
+body {
+    background-color: var(--color-background);
 }
 
-h1{
-    border: 1px solid red;
-}
 .score_container {
     display: flex;
     justify-content: space-evenly;
 }
 
 .score {
-    background-color: gray;
+    border: 3px solid var(--color-button-border);
+    background-color: var(--color-button);
     border-radius: var(--border-radius);
     justify-content: center;
     text-align: center;
@@ -31,7 +39,8 @@ h1{
 }
 
 .game_buttons_container input{
-    background-color: black;
+    border: 3px solid var(--color-button-border);
+    background-color: var(--color-button);
     border-radius: var(--border-radius);
     padding: 25px;
     width: var(--input-size);
@@ -41,4 +50,32 @@ h1{
 
 .center {
     text-align: center;
+}
+
+.animateMe {
+    animation-name: shake;
+    animation-duration:  1s;
+    animation-iteration-count: 1;
+}
+
+
+@keyframes shake {
+    0% {
+        transform: scale(50%);
+    }
+    20% {
+        transform: rotate(var(--first)) scale(var(--first-scale));
+    }
+    40% {
+        transform: rotate(var(--second)) scale(var(--first-scale));
+    }
+    60% {
+        transform: rotate(var(--first)) scale(var(--first-scale));
+    }
+    80% {
+        transform: rotate(var(--second)) scale(var(--first-scale));
+    }
+    100% {
+        transform: rotate(0deg);
+    }
 }
