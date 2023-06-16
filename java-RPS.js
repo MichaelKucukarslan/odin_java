@@ -6,8 +6,21 @@ const SCISSORS = 2;
 
 let userScore = 0;
 let computerScore = 0;
+var userScoreText = $("#userScore");
+var computerScoreText = $("#computerScore");
+
+
+function animateMe() {
+    console.log("here");
+    console.log($("#userScore")[0]);
+    $("#userScore")[0].setAttribute( "class", animateMe );
+    setTimeout( function() {
+        $("#userScore")[0].setAttribute( "class", "" );
+    }, 1000);
+}
 
 function game(userChoice) {
+    // removeMyClass();
     if (userChoice == "rock") {
         userChoice = ROCK;
     } else if (userChoice == "paper") {
@@ -18,30 +31,39 @@ function game(userChoice) {
     // Get a computer to make a choice
     let computerChoice = Math.floor(Math.random() * 3);
     // Test the outcomes of the user vs computer
-    if (computerChoice == userChoice) {
-        alert("Tie " + computerChoice);
-    } else if (computerChoice == SCISSORS && userChoice == ROCK) {
-        alert("You won");
-        userScore++;
-        // add point to user
-    } else if (computerChoice == ROCK && userChoice == SCISSORS) {
-        alert("Computer Won");
-        computerScore++;
-        // add point to computer
-    } else if (computerChoice > userChoice) {
-        alert("Computer Won");
-        computerScore++;
-        // add point to computer
-    } else {
-        alert("You Won");
-        userScore++;
-        // add point to user
-    }
+    // if (computerChoice == userChoice) {
+    //     alert("Tie " + computerChoice);
+    // } else if (computerChoice == SCISSORS && userChoice == ROCK) {
+    //     alert("You won");
+    //     userScore++;
+    //     userScoreText.addClass("animateMe", 2000, removeMyClass);
+    //     userScoreText.addEventListener("animationend", removeMyClass);
+    // } else if (computerChoice == ROCK && userChoice == SCISSORS) {
+    //     alert("Computer Won");
+    //     computerScore++;
+    //     $("#computerScoreText").addClass("animateMe");
+    //     $("#computerScoreText").on("animationend", removeMyClass);
+    // } else if (computerChoice > userChoice) {
+    //     alert("Computer Won");
+    //     computerScore++;
+    //     $("#computerScoreText").addClass("animateMe", 2000, removeMyClass);
+    //     $("#computerScoreText").addEventListener("animationend", removeMyClass);
+    // } else {
+    //     alert("You Won");
+    //     userScore++;
+    //     $("#userScoreText").addClass("animateMe", 2000, removeMyClass);
+    //     $("#userScoreText").addEventListener("animationend", removeMyClass);
+    // }
     // Display the outcome
     alertUserOfOutcome(userChoice, computerChoice);
-    // Display the score
-    alertUserOfScore(userScore, computerScore);
     // First one to 5 wins
+    updateScore();
+}
+
+function removeMyClass(){
+    console.log("Here");
+    $("#userScore").removeClass("animateMe");
+    $("#computerScore").removeClass("animateMe");
 }
 
 function alertUserOfScore(userScore, computerScore){
@@ -56,6 +78,12 @@ function alertUserOfScore(userScore, computerScore){
         computerScore = 0;
     }
 }
+
+function updateScore(){
+    userScoreText.innerHTML = userScore;
+    computerScoreText.innerHTML = computerScore;
+}
+
 function alertUserOfOutcome(userChoice, computerChoice) {
     userChoice = intToChoice(userChoice);
     computerChoice = intToChoice(computerChoice);
