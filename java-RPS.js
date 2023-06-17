@@ -6,17 +6,14 @@ const SCISSORS = 2;
 
 let userScore = 0;
 let computerScore = 0;
-var userScoreText = $("#userScore");
-var computerScoreText = $("#computerScore");
+var userScoreText = $("#userScore")[0];
+var computerScoreText = $("#computerScore")[0];
 
-
-function animateMe() {
-    console.log("here");
-    console.log($("#userScore")[0]);
-    $("#userScore")[0].setAttribute( "class", animateMe );
+function animateScore(scoreToAnimate) {
+    scoreToAnimate.setAttribute( "class", "yourAnimationClass" );
     setTimeout( function() {
-        $("#userScore")[0].setAttribute( "class", "" );
-    }, 1000);
+        scoreToAnimate.setAttribute( "class", "" );
+    }, 3000);
 }
 
 function game(userChoice) {
@@ -31,31 +28,35 @@ function game(userChoice) {
     // Get a computer to make a choice
     let computerChoice = Math.floor(Math.random() * 3);
     // Test the outcomes of the user vs computer
-    // if (computerChoice == userChoice) {
-    //     alert("Tie " + computerChoice);
-    // } else if (computerChoice == SCISSORS && userChoice == ROCK) {
-    //     alert("You won");
-    //     userScore++;
-    //     userScoreText.addClass("animateMe", 2000, removeMyClass);
-    //     userScoreText.addEventListener("animationend", removeMyClass);
-    // } else if (computerChoice == ROCK && userChoice == SCISSORS) {
-    //     alert("Computer Won");
-    //     computerScore++;
-    //     $("#computerScoreText").addClass("animateMe");
-    //     $("#computerScoreText").on("animationend", removeMyClass);
-    // } else if (computerChoice > userChoice) {
-    //     alert("Computer Won");
-    //     computerScore++;
-    //     $("#computerScoreText").addClass("animateMe", 2000, removeMyClass);
-    //     $("#computerScoreText").addEventListener("animationend", removeMyClass);
-    // } else {
-    //     alert("You Won");
-    //     userScore++;
-    //     $("#userScoreText").addClass("animateMe", 2000, removeMyClass);
-    //     $("#userScoreText").addEventListener("animationend", removeMyClass);
-    // }
+    if (computerChoice == userChoice) {
+        alert("Tie " + computerChoice);
+    } else if (computerChoice == SCISSORS && userChoice == ROCK) {
+        alert("You won");
+        userScore++;
+        animateScore(userScoreText);
+        // userScoreText.addClass("animateMe", 2000, removeMyClass);
+        // userScoreText.addEventListener("animationend", removeMyClass);
+    } else if (computerChoice == ROCK && userChoice == SCISSORS) {
+        alert("Computer Won");
+        computerScore++;
+        animateScore(computerScoreText);
+        // $("#computerScoreText").addClass("animateMe");
+        // $("#computerScoreText").on("animationend", removeMyClass);
+    } else if (computerChoice > userChoice) {
+        alert("Computer Won");
+        computerScore++;
+        animateScore(computerScoreText);
+        // $("#computerScoreText").addClass("animateMe", 2000, removeMyClass);
+        // $("#computerScoreText").addEventListener("animationend", removeMyClass);
+    } else {
+        alert("You Won");
+        userScore++;
+        animateScore(userScoreText);
+        // $("#userScoreText").addClass("animateMe", 2000, removeMyClass);
+        // $("#userScoreText").addEventListener("animationend", removeMyClass);
+    }
     // Display the outcome
-    alertUserOfOutcome(userChoice, computerChoice);
+    // alertUserOfOutcome(userChoice, computerChoice);
     // First one to 5 wins
     updateScore();
 }
